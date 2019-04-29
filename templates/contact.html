@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }}</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dist/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dist/css/contact.css') }}">
+</head>
+<body>
+	<div class="container text-center">
+		<div class="jumbotron">
+		<h1 class="display">Contact Form</h1>
+		<p class="lead">Contact Form with Flask !</p>
+
+		{% if success %}
+			<p class="lead text-success">Thank you for feedback !</p>
+		{% endif %}
+		</div>
+		<!-- {% for message in get_flashed_messages() %}
+				<div class="flash">{{ message }}</div>
+		{% endfor %} -->
+
+		{% for message  in form.name.errors %}
+		   <div class="flash">{{ message }}</div>
+		{% endfor %}
+
+		{% for message  in form.email.errors %}
+		   <div class="flash">{{ message }}</div>
+		{% endfor %}
+
+		{% for message  in form.subject.errors %}
+		   <div class="flash">{{ message }}</div>
+		{% endfor %}
+
+		{% for message  in form.message.errors %}
+		   <div class="flash">{{ message }}</div>
+		{% endfor %}
+	</div>
+	<div class="container">
+		<form action="{{ url_for('contactForm') }}" method="POST">
+			
+
+			{{ form.hidden_tag() }}
+
+			{{ form.name.label }}
+			{{ form.name }}
+
+			{{ form.email.label() }}
+			{{ form.email }}
+
+			{{ form.subject.label() }}
+			{{ form.subject }}
+
+			{{ form.message.label() }}
+			{{ form.message }}
+
+			{{ form.submit }}
+
+		</form>
+	</div>
+</body>
+</html>
