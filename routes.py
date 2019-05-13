@@ -21,7 +21,7 @@ mail = Mail(app)
 
 @app.route('/index')
 def index():
-	return render_template('index3.html', title='Flask Index', success=True)
+	return render_template('index.html', title='Flask Index', success=True)
 
 @app.route('/form', methods=['GET', 'POST'])
 def contactForm():
