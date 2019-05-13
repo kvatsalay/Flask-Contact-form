@@ -1,3 +1,4 @@
+# All Imports
 from flask import Flask, render_template, request, flash, url_for, redirect
 from forms import ContactForm
 from flask_mail import Message, Mail 
@@ -6,9 +7,8 @@ from flask_mail import Message, Mail
 
 app = Flask(__name__)
 
+# configurations
 app.config['SECRET_KEY'] = 'thisismysecret'
-
-
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = True
@@ -20,7 +20,7 @@ mail = Mail(app)
 
 
 
-# mail.init_app(app)
+
 
 @app.route('/index')
 def index():
